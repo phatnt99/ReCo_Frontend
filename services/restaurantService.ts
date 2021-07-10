@@ -32,7 +32,7 @@ const restaurantService = {
   update: (restaurant) => {
     console.log("SEND UPDATE");
     console.log(restaurant);
-    let url = spring.restaurant + restaurant.id;
+    let url = spring.restaurant + "/" +  restaurant.id;
 
     const payload = new FormData();
 
