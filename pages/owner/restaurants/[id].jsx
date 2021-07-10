@@ -30,7 +30,6 @@ import ConfirmModal from "../../../components/ConfirmModal";
 import restaurantService from "../../../services/restaurantService";
 import mlService from "../../../services/mlService";
 import Alert from "../../../components/Alert2";
-import spring from "../../../springRoute";
 
 const style = {
   label: {
