@@ -1,4 +1,4 @@
-var root = "http://recoapp-env.eba-ydhhumms.ap-northeast-1.elasticbeanstalk.com";
+var root = "https://d37qwhg1wwqiqd.cloudfront.net";
 var spring = {
   restaurant: `${root}/restaurants`,
   restaurantEdit: `${root}/restaurants/edit`,
