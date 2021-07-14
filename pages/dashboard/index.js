@@ -11,7 +11,7 @@ import {
   ListGroup,
   ListGroupItem,
   Spinner,
-  Input
+  Input,
 } from "reactstrap";
 import AdminLayout from "../../layouts/AdminLayout";
 import { Bar, Doughnut, PolarArea } from "react-chartjs-2";
@@ -184,7 +184,7 @@ function Dashboard() {
   });
   const [modalOpen, setModalOpen] = React.useState(false);
   const [hTabsIcons, setHTabsIcons] = React.useState("hTabsIcons-1");
-  const [year, setYear] = useState((new Date()).getFullYear());
+  const [year, setYear] = useState(new Date().getFullYear());
 
   // Data fetching
   let url = `${spring.dashboard}?year=${year}`;
@@ -275,7 +275,7 @@ function Dashboard() {
                 <CardHeader className="bg-transparent">
                   <Row className="align-items-center">
                     <Col>
-                    <h3 className="mb-0">Tổng quan</h3>
+                      <h3 className="mb-0">Tổng quan</h3>
                     </Col>
                     <Col></Col>
                   </Row>
@@ -460,13 +460,15 @@ function Dashboard() {
               <CardHeader className="bg-transparent">
                 <Row className="align-items-center">
                   <Col>
-                    <h6 className="text-uppercase text-light ls-1 mb-1">
-                      Tổng quan
-                    </h6>
+                    <h3 className="mb-0">Tổng quan</h3>
                   </Col>
                   <Col sm={2}>
-                    <Input type="number" bsSize="sm" value={year}
-                    onChange={e => setYear(e.target.value)}/>
+                    <Input
+                      type="number"
+                      bsSize="sm"
+                      value={year}
+                      onChange={(e) => setYear(e.target.value)}
+                    />
                   </Col>
                 </Row>
               </CardHeader>
@@ -607,7 +609,7 @@ function Dashboard() {
               <CardHeader className="border-0">
                 <Row className="align-items-center">
                   <Col>
-                    <h5 className="mb-0">Phân bố nhà hàng theo thẻ</h5>
+                    <h3 className="mb-0">Phân bố nhà hàng theo thẻ</h3>
                   </Col>
                 </Row>
               </CardHeader>
@@ -624,7 +626,7 @@ function Dashboard() {
               <CardHeader className="bg-transparent">
                 <Row className="align-items-center">
                   <Col>
-                    <h5 className="mb-0">Phân bố nhà hàng theo quận</h5>
+                    <h3 className="mb-0">Phân bố nhà hàng theo quận</h3>
                   </Col>
                 </Row>
               </CardHeader>
@@ -662,6 +664,6 @@ function Dashboard() {
 }
 
 Dashboard.layout = AdminLayout;
-Dashboard.title="Dashboard";
+Dashboard.title = "Dashboard";
 
 export default Dashboard;
