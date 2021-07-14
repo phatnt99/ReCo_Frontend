@@ -89,6 +89,7 @@ function ChangePWModal(props) {
                     </Col>
                     <Col>
                       <input
+                        type="password"
                         className="form-control"
                         id="res-general-cuisine"
                         {...register("currentPassword", {
@@ -122,11 +123,12 @@ function ChangePWModal(props) {
                     </Col>
                     <Col>
                       <input
+                        type="password"
                         className="form-control"
                         id="res-general-cuisine"
                         {...register("newPassword", {
                           required: true,
-                          pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
+                          pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\@\#\$\%\^\&\+\=])(?=.*\d)[a-zA-Z\@\#\$\%\^\&\+\=\d]{8,}$/
                         })}
                       />
                       {errors.newPassword &&
@@ -155,6 +157,7 @@ function ChangePWModal(props) {
                     </Col>
                     <Col>
                       <input
+                        type="password"
                         className="form-control"
                         id="res-general-cuisine"
                         {...register("reNewPassword", {
