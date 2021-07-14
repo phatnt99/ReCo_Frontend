@@ -342,7 +342,7 @@ function ReservationWaitApprove({ id, reload, setR }) {
   if (id != 0) {
     query = `${spring.reservation}/type/1/restaurant/${id}?page=${page}&size=${size}&size=${size}&sortable=${sort.field}&direction=${sort.direction}`;
   }
-  const { data: reservations, error } = useSWR(query);
+  const { data: reservations, error } = useSWR(query, { refreshInterval: 1000 });
 
   const renderRow = () => {
     return reservations.content.map((reservation) => (
@@ -563,7 +563,7 @@ function ReservationApproved({ id, reload, setR }) {
   if (id != 0) {
     query = `${spring.reservation}/type/2/restaurant/${id}?page=${page}&size=${size}&size=${size}&sortable=${sort.field}&direction=${sort.direction}`;
   }
-  const { data: reservations, error } = useSWR(query);
+  const { data: reservations, error } = useSWR(query, { refreshInterval: 1000 });
 
   useEffect(() => {
     mutate(query);
@@ -789,7 +789,7 @@ function ReservationCanceled({ id, reload, setR }) {
   if (id != 0) {
     query = `${spring.reservation}/type/3/restaurant/${id}?page=${page}&size=${size}&size=${size}&sortable=${sort.field}&direction=${sort.direction}`;
   }
-  const { data: reservations, error } = useSWR(query);
+  const { data: reservations, error } = useSWR(query, { refreshInterval: 1000 });
 
   useEffect(() => {
     mutate(query);
@@ -974,7 +974,7 @@ function ReservationHistory({ id, reload, setR }) {
   if (id != 0) {
     query = `${spring.reservation}/type/4/restaurant/${id}?page=${page}&size=${size}&size=${size}&sortable=${sort.field}&direction=${sort.direction}`;
   }
-  const { data: reservations, error } = useSWR(query);
+  const { data: reservations, error } = useSWR(query, { refreshInterval: 1000 });
 
   useEffect(() => {
     mutate(query);
