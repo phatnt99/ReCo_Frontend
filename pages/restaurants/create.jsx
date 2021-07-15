@@ -141,12 +141,6 @@ function CreateRestaurant() {
     });
   };
 
-
-  useEffect(() => {
-    console.log("Co errror");
-    console.log(errors)
-  }, [errors]);
-
   return (
     <>
       <div className="header bg-gradient-dark pb-8 pt-5 pt-md-8">
