@@ -22,7 +22,7 @@ var spring = {
   followRe: `${root}/restaurants/follow`,
   search_review: `${root}/search/review?query=`,
   search_restaurant: `${root}/search/restaurant?query=`,
-  search_restaurant2: `${root}/search/restaurant/onwer`,
+  search_restaurant2: `${root}/search/restaurant/owner`,
   image: `${root}/upload-image`,
   admin: {
     tag: `${root}/admin/tags`,
