@@ -126,6 +126,8 @@ function CreateRestaurant() {
       ...dd,
       ownerId: ownerId
     }
+
+    console.log(dd);
     
     // post data request
     restaurantService.create(dd).then((response) => {

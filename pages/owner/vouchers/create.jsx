@@ -275,11 +275,11 @@ function VoucherEdit() {
                         className="form-control"
                         {...register("fromTime", {
                           required: true,
-                          validate: {
-                            validDate: (v) =>
-                              new Date(v).getTime() <=
-                              new Date(getValues("toTime")).getTime(),
-                          },
+                          // validate: {
+                          //   validDate: (v) =>
+                          //     new Date(v).getTime() <=
+                          //     new Date(getValues("toTime")).getTime(),
+                          // },
                         })}
                         invalid={errors.fromTime}
                       />
@@ -305,11 +305,11 @@ function VoucherEdit() {
                         className="form-control"
                         {...register("toTime", {
                           required: true,
-                          validate: {
-                            validDate: (v) =>
-                              new Date(v).getTime() >=
-                              new Date(getValues("fromTime")).getTime(),
-                          },
+                          // validate: {
+                          //   validDate: (v) =>
+                          //     new Date(v).getTime() >=
+                          //     new Date(getValues("fromTime")).getTime(),
+                          // },
                         })}
                         invalid={errors.toTime}
                       />

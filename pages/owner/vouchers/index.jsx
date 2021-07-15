@@ -223,9 +223,10 @@ function Voucher() {
     field: "updatedAt",
     direction: "DESC",
   });
+  const ownerId = localStorage.getItem("authId");
 
   // Data fetching
-  const url = `${spring.voucher}?page=${page}&size=${size}&sortable=${sort.field}&direction=${sort.direction}`;
+  const url = `${spring.voucher}/owner/${ownerId}?page=${page}&size=${size}&sortable=${sort.field}&direction=${sort.direction}`;
   const { data: vouchers, error } = useSWR(url);
 
   //Headers
