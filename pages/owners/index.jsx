@@ -261,12 +261,14 @@ function OwnerRow({ owner, model, setModel }) {
 
 function OwnerTable({ isSearch, search, model, setModel }) {
   //
+  console.log("is search = " + isSearch);
+  console.log("model = " + search);
   const [checkAll, setCheckAll] = useState(false);
   //Pagination
   const [page, setPage] = useState(0);
   const [size, setSize] = useState(15);
   const [sort, setSort] = useState({
-    field: "",
+    field: "updatedAt",
     direction: "ASC",
   });
   const [modalOpen, setModalOpen] = React.useState(false);
@@ -398,7 +400,7 @@ function OwnerTable({ isSearch, search, model, setModel }) {
   if (isSearch)
     url = `${spring.owner}/search?query=${search}&page=${page}&size=${size}&sortable=${sort.field}&direction=${sort.direction}`;
 
-  const { data: owners, error } = useSWR(spring.owner);
+  const { data: owners, error } = useSWR(url);
 
   if (!owners)
     return (
@@ -440,6 +442,7 @@ function Owner() {
 
   const search = (e) => {
     e.preventDefault();
+    console.log("query = " + query)
     setIsSearch(true);
   };
 
