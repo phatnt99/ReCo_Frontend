@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardBody,
@@ -119,6 +119,7 @@ function CreateRestaurant() {
   });
 
   const create = (data) => {
+    console.log("TAO");
     setCreating(true);
     // validate
     const { payment, ...formModel } = data;
@@ -139,6 +140,12 @@ function CreateRestaurant() {
       } else Alert.showError();
     });
   };
+
+
+  useEffect(() => {
+    console.log("Co errror");
+    console.log(errors)
+  }, [errors]);
 
   return (
     <>
@@ -161,7 +168,7 @@ function CreateRestaurant() {
               <Col className="d-flex justify-content-end"></Col>
             </Row>
           </CardHeader>
-          <Form onSubmit={handleSubmit(create)}>
+          <Form onSubmit={handleSubmit(create, e => console.log(e))}>
             <CardBody>
               <FormGroup row>
                 <Label for="res-name" sm={2} style={style.label}>
@@ -371,7 +378,7 @@ function CreateRestaurant() {
                             pattern: /[0-9]/,
                             validate: {
                               notEmpty: v => v.trim() != "",
-                              validPrice: v => v <= getValues("maxPrice")
+                              //validPrice: v => v <= getValues("maxPrice")
                             }
                           })}
                           invalid={errors.minPrice ? true : false}
@@ -408,7 +415,7 @@ function CreateRestaurant() {
                             pattern: /[0-9]/,
                             validate: {
                               notEmpty: v => v.trim() != "",
-                              validPrice: v => v >= getValues("minPrice")
+                              //validPrice: v => v >= getValues("minPrice")
                             }
                           })}
                           invalid={errors.maxPrice ? true : false}
@@ -639,7 +646,7 @@ function CreateRestaurant() {
                     </Button>
                   )}
                   {creating && (
-                    <Button color="primary" type="submit" disabled={true}>
+                    <Button color="primary" type="" disabled={true}>
                       Đang xử lý
                     </Button>
                   )}

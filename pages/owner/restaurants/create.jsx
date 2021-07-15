@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardBody,
@@ -41,6 +41,7 @@ const style = {
 };
 
 function CreateRestaurant() {
+  const [creating, setCreating] = useState(false);
   const [restaurant, setRestaurant] = useState({
     carousel: [],
     menu: [],
@@ -116,6 +117,7 @@ function CreateRestaurant() {
 
   const create = (data) => {
     // validate
+    setCreating(true);
     const { payment, ...formModel } = data;
     let dd = Object.assign(restaurant, formModel);
     const ownerId = localStorage.getItem("authId");
@@ -128,6 +130,7 @@ function CreateRestaurant() {
     // post data request
     restaurantService.create(dd).then((response) => {
       console.log(response);
+      setCreating(false);
       if (response.status == "CREATED") {
         mlService.updateRestaurantDistance(response.data.id);
         Alert.showCreateSuccess();
@@ -359,7 +362,7 @@ function CreateRestaurant() {
                           pattern: /[0-9]/,
                           validate: {
                             notEmpty: v => v.trim() != "",
-                            validPrice: v => v <= getValues("maxPrice")
+                            //validPrice: v => v <= getValues("maxPrice")
                           }
                         })}
                         invalid={errors.minPrice ? true : false}
@@ -395,7 +398,7 @@ function CreateRestaurant() {
                           pattern: /[0-9]/,
                           validate: {
                             notEmpty: v => v.trim() != "",
-                            validPrice: v => v >= getValues("minPrice")
+                            //validPrice: v => v >= getValues("minPrice")
                           }
                         })}
                         invalid={errors.maxPrice ? true : false}
@@ -620,9 +623,16 @@ function CreateRestaurant() {
                   )}
                 </Col>
                 <Col className="d-flex justify-content-end">
-                  <Button color="primary" type="submit">
-                    Thêm nhà hàng
-                  </Button>
+                {!creating && (
+                    <Button color="primary" type="submit">
+                      Thêm nhà hàng
+                    </Button>
+                  )}
+                  {creating && (
+                    <Button color="primary" type="" disabled={true}>
+                      Đang xử lý
+                    </Button>
+                  )}
                 </Col>
               </Row>
             </CardFooter>
