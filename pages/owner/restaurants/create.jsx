@@ -124,11 +124,11 @@ function CreateRestaurant() {
 
     dd = {
       ...dd,
-      ownerId: ownerId
-    }
+      ownerId: ownerId,
+    };
 
     console.log(dd);
-    
+
     // post data request
     restaurantService.create(dd).then((response) => {
       console.log(response);
@@ -180,7 +180,7 @@ function CreateRestaurant() {
                     invalid={errors.name ? true : false}
                   />
                   {errors.name && (
-                     <FormFeedback>Không được trống.</FormFeedback>
+                    <FormFeedback>Không được trống.</FormFeedback>
                   )}
                 </Col>
               </FormGroup>
@@ -334,9 +334,7 @@ function CreateRestaurant() {
                         invalid={errors.openTime ? true : false}
                       />
                       {errors.openTime && (
-                        <FormFeedback>
-                          Không được trống.
-                        </FormFeedback>
+                        <FormFeedback>Không được trống.</FormFeedback>
                       )}
                     </FormGroup>
                   </Col>
@@ -356,29 +354,36 @@ function CreateRestaurant() {
                           display: "flex",
                         }}
                       >
-                      <Input
-                        type="text"
-                        id="res-price-from"
-                        {...register("minPrice", {
-                          required: true,
-                          pattern: /[0-9]/,
-                          validate: {
-                            notEmpty: v => v.trim() != "",
-                            //validPrice: v => v <= getValues("maxPrice")
-                          }
-                        })}
-                        invalid={errors.minPrice ? true : false}
-                      />
-                      <InputGroupText style={style.inputRight}>
-                        VND
-                      </InputGroupText>
-                    </div>
-                    {errors.minPrice && errors.minPrice.type == 'required' && (
-                      <FormFeedback style={{display: 'block'}}>Không được trống.</FormFeedback>
-                    )}
-                    {errors.minPrice && errors.minPrice.type == 'validPrice' && (
-                      <FormFeedback style={{display: 'block'}}>Không lớn hơn Giá cao nhất.</FormFeedback>
-                    )}
+                        <Input
+                          style={style.inputLeft}
+                          type="text"
+                          id="res-price-from"
+                          {...register("minPrice", {
+                            required: true,
+                            pattern: /[0-9]/,
+                            validate: {
+                              notEmpty: (v) => v.trim() != "",
+                              //validPrice: v => v <= getValues("maxPrice")
+                            },
+                          })}
+                          invalid={errors.minPrice ? true : false}
+                        />
+                        <InputGroupText style={style.inputRight}>
+                          VND
+                        </InputGroupText>
+                      </div>
+                      {errors.minPrice &&
+                        errors.minPrice.type == "required" && (
+                          <FormFeedback style={{ display: "block" }}>
+                            Không được trống.
+                          </FormFeedback>
+                        )}
+                      {errors.minPrice &&
+                        errors.minPrice.type == "validPrice" && (
+                          <FormFeedback style={{ display: "block" }}>
+                            Không lớn hơn Giá cao nhất.
+                          </FormFeedback>
+                        )}
                     </FormGroup>
                   </Col>
                   <Col md={4}>
@@ -392,29 +397,35 @@ function CreateRestaurant() {
                           display: "flex",
                         }}
                       >
-                      <Input
-                        type="text"
-                        id="res-price-to"
-                        {...register("maxPrice", {
-                          required: true,
-                          pattern: /[0-9]/,
-                          validate: {
-                            notEmpty: v => v.trim() != "",
-                            //validPrice: v => v >= getValues("minPrice")
-                          }
-                        })}
-                        invalid={errors.maxPrice ? true : false}
-                      />
-                      <InputGroupText style={style.inputRight}>
-                        VND
-                      </InputGroupText>
-                    </div>
-                    {errors.maxPrice && errors.maxPrice.type == 'required' && (
-                      <FormFeedback style={{display: 'block'}}>Không được trống. </FormFeedback>
-                    )}
-                    {errors.maxPrice && errors.maxPrice.type == 'validPrice' && (
-                      <FormFeedback style={{display: 'block'}}>Không nhỏ hơn Giá thấp nhất.</FormFeedback>
-                    )}
+                        <Input
+                          type="text"
+                          id="res-price-to"
+                          {...register("maxPrice", {
+                            required: true,
+                            pattern: /[0-9]/,
+                            validate: {
+                              notEmpty: (v) => v.trim() != "",
+                              //validPrice: v => v >= getValues("minPrice")
+                            },
+                          })}
+                          invalid={errors.maxPrice ? true : false}
+                        />
+                        <InputGroupText style={style.inputRight}>
+                          VND
+                        </InputGroupText>
+                      </div>
+                      {errors.maxPrice &&
+                        errors.maxPrice.type == "required" && (
+                          <FormFeedback style={{ display: "block" }}>
+                            Không được trống.{" "}
+                          </FormFeedback>
+                        )}
+                      {errors.maxPrice &&
+                        errors.maxPrice.type == "validPrice" && (
+                          <FormFeedback style={{ display: "block" }}>
+                            Không nhỏ hơn Giá thấp nhất.
+                          </FormFeedback>
+                        )}
                     </FormGroup>
                   </Col>
                   <Col md={4}>
@@ -625,7 +636,7 @@ function CreateRestaurant() {
                   )}
                 </Col>
                 <Col className="d-flex justify-content-end">
-                {!creating && (
+                  {!creating && (
                     <Button color="primary" type="submit">
                       Thêm nhà hàng
                     </Button>
@@ -646,6 +657,6 @@ function CreateRestaurant() {
 }
 
 CreateRestaurant.layout = AdminLayout;
-CreateRestaurant.title="Nhà Hàng";
+CreateRestaurant.title = "Nhà Hàng";
 
 export default CreateRestaurant;

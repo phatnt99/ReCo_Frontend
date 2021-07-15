@@ -396,7 +396,7 @@ function OwnerTable({ isSearch, search, model, setModel }) {
   // Data fetching
   let url = `${spring.owner}?page=${page}&size=${size}&sortable=${sort.field}&direction=${sort.direction}`;
   if (isSearch)
-    url = `${spring.owner}/search?query=${query}&page=${page}&size=${size}&sortable=${sort.field}&direction=${sort.direction}`;
+    url = `${spring.owner}/search?query=${search}&page=${page}&size=${size}&sortable=${sort.field}&direction=${sort.direction}`;
 
   const { data: owners, error } = useSWR(spring.owner);
 

@@ -301,7 +301,7 @@ function RestaurantTable({ isSearch, model }) {
     "&direction=" +
     sort.direction;
   if (isSearch) {
-    url = `${spring.search_restaurant}${model}&type=restaurant&page=${page}&size=${size}&sortable=${sort.field}&direction=${sort.direction}`;
+    url = `${spring.search_restaurant2}/${authId}?query=${model}&page=${page}&size=${size}&sortable=${sort.field}&direction=${sort.direction}`;
   }
   const { data: restaurants, error } = useSWR(url);
 

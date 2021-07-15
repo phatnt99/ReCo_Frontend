@@ -354,8 +354,16 @@ function Dashboard() {
     ],
   };
 
-  const reservationMonths = analys.monthAndReservations.map((r) => r.count);
-  const reviewMonths = analys.monthAndReviews.map((r) => r.count);
+  const reservationMonths = [0,0,0,0,0,0,0,0,0,0,0,0];
+  const reviewMonths = [0,0,0,0,0,0,0,0,0,0,0,0];
+
+  analys.monthAndReservations.forEach(v => {
+    reservationMonths[v.month-1] = v.count;
+  })
+
+  analys.monthAndReservations.forEach(v => {
+    reviewMonths[v.month-1] = v.count;
+  })
 
   return (
     <>

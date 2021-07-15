@@ -54,12 +54,7 @@ function CreateRestaurant() {
     reset,
     getValues,
     setValue,
-  } = useForm({
-    defaultValues: {
-      ownerId: -1,
-      district: 7,
-    },
-  });
+  } = useForm({});
   const [response, setResponse] = useState({});
   // Data fetching
   const ownerQuery = `${spring.owner}`;
@@ -124,6 +119,12 @@ function CreateRestaurant() {
     // validate
     const { payment, ...formModel } = data;
     const dd = Object.assign(restaurant, formModel);
+    if(dd.ownerId == undefined) {
+      dd.ownerId = -1;
+    }
+    if(dd.district == undefined) {
+      dd.district = 7;
+    }
     setRestaurant(dd);
     // ignore undefined field
     Object.keys(restaurant).forEach(function (key) {
