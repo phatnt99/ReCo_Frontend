@@ -1,4 +1,4 @@
-var root = "http://localhost:8080";
+var root = "https://d37qwhg1wwqiqd.cloudfront.net";
 var spring = {
   restaurant: `${root}/restaurants`,
   restaurantEdit: `${root}/restaurants/edit`,
