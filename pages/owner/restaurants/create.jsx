@@ -396,6 +396,7 @@ function CreateRestaurant() {
                         }}
                       >
                         <Input
+                          style={style.inputLeft}
                           type="text"
                           id="res-price-to"
                           {...register("maxPrice", {
