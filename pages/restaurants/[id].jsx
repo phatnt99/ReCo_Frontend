@@ -693,7 +693,7 @@ function RestaurantEdit() {
                                 value="Visa / Master card"
                                 {...register("payment.1")}
                                 defaultChecked={model.payment.find(
-                                  (p) => p == "Visa / Master card"
+                                  (p) => p == "Visa/Master Card"
                                 )}
                                 onChange={(e) =>
                                   handlePayment(e, "Visa / Master card")

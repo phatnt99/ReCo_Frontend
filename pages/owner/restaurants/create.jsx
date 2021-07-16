@@ -52,11 +52,7 @@ function CreateRestaurant() {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm({
-    defaultValues: {
-      district: 7,
-    },
-  });
+  } = useForm({});
   const [response, setResponse] = useState({});
   // Data fetching
   const ownerQuery = `${spring.owner}`;
@@ -126,6 +122,8 @@ function CreateRestaurant() {
       ...dd,
       ownerId: ownerId,
     };
+
+    if (dd.district == undefined) dd.district = 7;
 
     console.log(dd);
 
